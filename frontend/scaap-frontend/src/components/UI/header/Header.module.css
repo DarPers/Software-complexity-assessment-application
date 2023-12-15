@@ -1,0 +1,41 @@
+.head {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    height: 55px;
+    background-color: #5193B3;
+    font-family: Roboto;
+    color: #FFF;
+}
+
+.logo {
+    margin: 0 0 0 15px;
+    font-size: 33px;
+}
+
+.logo:hover {
+    opacity: 0.7;
+}
+
+.account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nick {
+    font-size: 20px;
+}
+
+.account img {
+    height: 35px;
+    width: 35px;
+    margin: 0 20px 0;
+}
+
+.account img:hover {
+    opacity: 0.7;
+}
