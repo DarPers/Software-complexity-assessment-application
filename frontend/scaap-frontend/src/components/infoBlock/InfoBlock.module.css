@@ -1,0 +1,33 @@
+.info_block {
+    padding: 45px;
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 25px;
+}
+
+.title {
+    /* margin-top: 140px; */
+    text-align: center;
+    font-weight: 700;
+}
+
+.text {
+    margin-top: 59px;
+    font-weight: 400;
+}
+
+.btn_read {
+    margin-top: 45px;
+    width: 244px;
+    height: 35px;
+    border-radius: 15px;
+    color: #FFF;
+    font-weight: 700;
+    border: 2px solid #F8D49A;
+    background: #F8D49A;
+}
+
+.btn_read:hover {
+    border: #ffdfab;
+    background: #ffdfab;
+}
