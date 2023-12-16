@@ -4,7 +4,6 @@ import Button from "../components/UI/button/Button"
 import Input from "../components/UI/input/Input"
 import classes from "../styles/CreateProject.module.css"
 import Select from "../components/UI/select/Select";
-import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 const CreateProject = () => {
