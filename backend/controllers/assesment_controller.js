@@ -41,6 +41,23 @@ class AssesmentController {
         }
     }
 
+    async getProjectDescription(req, res){
+        try {
+            const errors = validationResult(req);
+            console.log(errors);
+            if (!errors.isEmpty()){
+                return res.status(400).json({message: "Assesment error", errors})
+            }
+            const {projectType} = req.body;
+            const assessment = assesment_service.getProjectDescription(projectType);
+            res.json(assessment)
+        }
+        catch (e) {
+            console.log(e)
+            res.status(400).json({message: 'Assesment error'})
+        }
+    }
+
     async countMFPs(req, res){
         try {
             const errors = validationResult(req);

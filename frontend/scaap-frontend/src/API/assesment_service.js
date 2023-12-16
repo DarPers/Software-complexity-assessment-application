@@ -34,6 +34,18 @@ class AssesmentService {
       });
       return response.json();
     } 
+
+    async getProjectDescription(projectType) {
+      const data = {projectType: projectType}
+      const response = await fetch('http://localhost:8888/assesment/getProjectDescroption', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      return response.json();
+    }
 }
 
 export default new AssesmentService()

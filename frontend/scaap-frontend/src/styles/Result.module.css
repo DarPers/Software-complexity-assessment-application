@@ -1,0 +1,49 @@
+.content {
+    padding: 80px;
+    font-family: "Roboto";
+    color: #5193B3;
+}
+
+.name {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn_block {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.down_btn {
+    height: 35px;
+    width: 65%;
+    margin: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: #F8D49A;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.down_btn:hover{
+    background-color: #ffdfab;
+}
+
+.acc_btn {
+    height: 35px;
+    width: 65%;
+    margin: 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: #5193B3;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.acc_btn:hover{
+    background-color: #61a5c7;
+}

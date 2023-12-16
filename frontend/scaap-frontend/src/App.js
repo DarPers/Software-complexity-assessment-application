@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import CreateProject from "./pages/CreateProject";
 import MFPAssesment from "./pages/MFPAssesment";
 import CocomoAssesment from "./pages/CocomoAssesment"
+import Result from "./pages/Results";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/createproject" Component={CreateProject}/>
         <Route path="/assesment" Component={MFPAssesment}/>
         <Route path="/assesment2" Component={CocomoAssesment}/>
+        <Route path="/result" Component={Result}/>
       </Routes>
     </BrowserRouter>
   );

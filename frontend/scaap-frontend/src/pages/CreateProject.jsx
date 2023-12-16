@@ -19,9 +19,11 @@ const CreateProject = () => {
         {value: 'VisualBasic (v6)'},
     ];
     const [option, setOption] = useState('Language');
+    const [projectName, setProjectName] = useState('');
+    const [projectDesc, setProjectDesc] = useState('');
 
     const createProject = () => {
-        navigate('/assesment', {language: option});
+        navigate('/assesment', {state: {language: option, name: projectName, desc: projectDesc}});
         //сохранить проект в бд
     }
 
@@ -37,18 +39,16 @@ const CreateProject = () => {
                     <div>Step 1: create a card for your project</div>
                     <div>This information will be saved in your personal account, so you can find it easily</div>
                     <div className={classes.inpt_block}>
-                        <Input className={classes.inpt} placeholder="Title"></Input>
+                        <Input className={classes.inpt} placeholder="Title" value={projectName} onChange={(e) => setProjectName(e.target.value)}></Input>
                         <div className={classes.slct}>
                             <Select options={options} defaultValue="Language" value={option} setValue={setOption}/>
                         </div>
                         <div className={classes.fin_block}>
-                            <textarea className={classes.inpt_desc} placeholder="Description (recommend to leave a link of project GitHub)"></textarea>
+                            <textarea className={classes.inpt_desc} value={projectDesc} onChange={(e) => setProjectDesc(e.target.value)} placeholder="Description (recommend to leave a link of project GitHub)"></textarea>
                             <div className={classes.btn_block}>
                                 <div className={classes.comm}>Make sure that the description fully describes the purpose of the project,
                                  you can specify the basic requirements for the software product</div>
-                                 {/* <Link to="/assesment" state={option}> */}
-                                    <Button onClick={createProject} className={classes.btn_done}>DONE</Button>
-                                 {/* </Link> */}
+                                <Button onClick={createProject} className={classes.btn_done}>DONE</Button>
                             </div>
                         </div>
                     </div>

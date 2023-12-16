@@ -8,15 +8,17 @@ import {useNavigate, useLocation} from 'react-router-dom'
 import Input from '../components/UI/input/Input';
 import PageComponent from '../components/pageComponent/pageComponent';
 
-const CocomoAssesment = ({KLOC, projectType}) => {
-
+const CocomoAssesment = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const done = () => {
-    navigate('/assesment');
-    //сохранить проект в бд
-};
+  const done = async () => {
+    const description = await assesment_servise.getProjectDescription(definedType);
+    console.log(description);
+    navigate('/result', {state: {projectType: definedType, weight: projectWeight, assesmentCocomo: assesm, description: description, desc: location.state.desc, name: location.state.name}});
+  };
+
+    const projectWeight = location.state.weight;
     const projectTypes = [{value: "organic"}, {value: "semidetached"}, {value: "embedded"}];
     const [kloc, setKLOC] = useState(location.state.KLOC);
     const [definedType, setDefinedType] = useState(location.state.projectType); 
@@ -26,8 +28,6 @@ const CocomoAssesment = ({KLOC, projectType}) => {
   const assesment = useMemo(async () => {
     const data = await assesment_servise.getCocomoAssesment(tableData, definedType, kloc);
     setAssem({people: data.people, month: data.time, people_month: data.effort});
-    console.log(definedType);
-    console.log(kloc);
   }, [tableData, kloc, definedType])
 
   return (
@@ -55,7 +55,7 @@ const CocomoAssesment = ({KLOC, projectType}) => {
           <div>MONTH - {assesm.month}</div>
           <div>
             <div>PEOPLE/MONTH - {assesm.people_month}</div>
-            <Button>FINISH ASSESMENT</Button>
+            <Button onClick={done}>FINISH ASSESMENT</Button>
           </div>
         </div>
       </div>

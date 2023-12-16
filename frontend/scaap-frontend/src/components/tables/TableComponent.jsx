@@ -2,10 +2,11 @@ import React, { useState, useMemo } from 'react';
 import TableRow from './TableRow';
 import classes from './TableRow.module.css';
 import Button from '../UI/button/Button';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import assesment_service from '../../API/assesment_service';
 
-const TableComponent = ({language}) => {
+const TableComponent = () => {
+    const location = useLocation();
     const [tableData, setTableData] = useState([{}]);  
     const addRow = () => {
       setTableData([...tableData, '']);
@@ -29,7 +30,7 @@ const TableComponent = ({language}) => {
     const [projectCharacts, setProjectCharacts] = useState({projectType: "organic", KLOC: 0});
 
     const projectAssesment = useMemo(async () => {
-      const data = await assesment_service.defineProjectType(assesment, language);
+      const data = await assesment_service.defineProjectType(assesment, location.state.language);
       setProjectCharacts({projectType: data.projectType, KLOC:data.KLOC});
       console.log(projectCharacts);
     }, [tableData])
@@ -37,7 +38,7 @@ const TableComponent = ({language}) => {
     const navigate = useNavigate();
 
     const getCocomoAssesment = () => {
-      navigate('/assesment2', {state: {KLOC: projectCharacts.KLOC, projectType: projectCharacts.projectType}});
+      navigate('/assesment2', {state: {KLOC: projectCharacts.KLOC, projectType: projectCharacts.projectType, weight: assesment, name:location.state.name, desc:location.state.desc}});
     }
 
     return (

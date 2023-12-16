@@ -12,6 +12,22 @@ class AssesmentService {
         }
     }
 
+    getProjectDescription = (projectType) => {
+        switch (projectType) {
+            case "organic":
+                return {team:"Small", experience:"Experienced developers needed",
+                        enviroment:"Familiar enviroment", innovation: "Minor", deadline:"Not tight"};
+            case "semidetached":
+                return {team:"Medium", experience:"Mix of newbie and experienced developers",
+                        enviroment:"Less familiar enviroment", innovation: "Medium", deadline:"Medium"};
+            case "embedded":
+                return {team:"Large", experience:"Good experience developers",
+                        enviroment:"Unfamiliar enviroment", innovation: "Major", deadline:"Very tight"};
+            default:
+                break;
+        }
+    }
+
     countLinesOfCode(weight, language){
         const weightOnePoint = this.getQuantityOfCodeLinesForOneFP(language);
         return weight * weightOnePoint;
