@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import TableRow from './TableRow';
 import classes from './TableRow.module.css';
-import Button from '../button/Button';
+import Button from '../UI/button/Button';
 import { useNavigate } from "react-router-dom";
-import assesment_service from '../../../API/assesment_service';
+import assesment_service from '../../API/assesment_service';
 
 const TableComponent = ({language}) => {
     const [tableData, setTableData] = useState([{}]);  
@@ -37,7 +37,7 @@ const TableComponent = ({language}) => {
     const navigate = useNavigate();
 
     const getCocomoAssesment = () => {
-      navigate('/assesment2', {projectCharacts: projectCharacts});
+      navigate('/assesment2', {state: {KLOC: projectCharacts.KLOC, projectType: projectCharacts.projectType}});
     }
 
     return (
