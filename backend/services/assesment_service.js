@@ -31,15 +31,24 @@ class AssesmentService {
                 return 172;
             case "VisualBasic (v6)":
                 return 24;
+            default:
+                return 0;
         }
     }
 
     getCocomoAssesment(projectType, KLOC, assessment){
+        console.log(projectType, KLOC, assessment);
         const EAF = this.countEffortAdjustmentFactor(this.getDriversValue(assessment));
         const consts = this.setConstant(projectType);
         const effort = consts.a * ((KLOC)**consts.b) * EAF;
         const time = consts.c * (effort**consts.d);
-        const people = effort/time;
+        let people;
+        if (time != 0){
+            people = effort/time ;
+        }
+        else{
+            people = 0;
+        }
         return {effort : effort.toFixed(2), time: time.toFixed(2), people:people.toFixed(2)};
     }
 
