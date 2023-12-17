@@ -1,0 +1,59 @@
+.project {
+    margin: 10px;
+    font-family: "Roboto";
+    color: #5193B3;
+}
+
+.name {
+    font-size: 25px;
+}
+
+.line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.block {
+    display: flex;
+    justify-content: space-evenly;
+    width: 55%;
+    margin: 5px;
+    padding: 20px;
+    border: 2px solid #5193B3;
+    border-radius: 25px;
+}
+
+.btns{
+    margin: 10px;
+}
+
+.btn{
+    height: 35px;
+    width: 105px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 15px;
+    background-color: #5193B3;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.btn:hover{
+    background-color: #61a5c7;
+}
+
+.assesm {
+    display: flex;
+    justify-content: space-between;
+}
+
+.assesm div{
+    margin: 0 5px 5px 5px;
+}
+
+.assesm .title{
+    font-weight: bold;
+}
