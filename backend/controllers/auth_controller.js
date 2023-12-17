@@ -10,7 +10,7 @@ const generateAccessToken = (id, login) => {
         login
     }
 
-    return jwt.sign(payload, secret, {expiresIn : "5h"})
+    return jwt.sign(payload, secret, {expiresIn : "24h"})
 }
 
 class AuthController {
@@ -38,7 +38,6 @@ class AuthController {
     }
 
     async login(req, res){
-        console.log("TUT");
         try {
             const {login, password} = req.body
             const user = await user_controller.getUsersbyLogin(login);
@@ -51,7 +50,7 @@ class AuthController {
                 return res.status(400).json({message : 'Password is not right'})
             }
             const token = generateAccessToken(user.id, user.login);
-            res.json({token});
+            res.json({token: token, id: user.id});
         }
         catch (e) {
             console.log(e)

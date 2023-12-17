@@ -27,13 +27,18 @@ const CreateProject = () => {
         //сохранить проект в бд
     }
 
+    const goToAccount = () => {
+        navigate('/account');
+        //сохранить проект в бд
+    }
+
     return (
         <div>
             <Header nick_name="meee"></Header>
             <div className={classes.content}>
                 <div className={classes.title_block}>
                     <div className={classes.title}>CREATE PROJECT</div>
-                    <Button className={classes.btn_return}>RETURN</Button>
+                    <Button onClick={goToAccount} className={classes.btn_return}>RETURN</Button>
                 </div>
                 <div className={classes.info}>
                     <div>Step 1: create a card for your project</div>

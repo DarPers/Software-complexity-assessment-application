@@ -14,6 +14,11 @@ const Login = () => {
 
     const logIn = async () => {
         const response = await auth_service.postAuthData(login, password)
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("id", response.id);
+        auth_service.isAuth = true;
+        localStorage.setItem("isAuth", true);
+        console.log(auth_service.isAuth);
         console.log(response);
     }
 

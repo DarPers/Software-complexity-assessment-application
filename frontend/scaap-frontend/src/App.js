@@ -5,6 +5,8 @@ import CreateProject from "./pages/CreateProject";
 import MFPAssesment from "./pages/MFPAssesment";
 import CocomoAssesment from "./pages/CocomoAssesment"
 import Result from "./pages/Results";
+import Account from "./pages/Account";
+import PrivateRoute from "./components/accountComponents/PrivateRoute";
 
 function App() {
   return (
@@ -12,10 +14,22 @@ function App() {
       <Routes>
         <Route path="/login" Component={Login}/>
         <Route path="/register" Component={Register}/>
-        <Route path="/createproject" Component={CreateProject}/>
-        <Route path="/assesment" Component={MFPAssesment}/>
-        <Route path="/assesment2" Component={CocomoAssesment}/>
-        <Route path="/result" Component={Result}/>
+        <Route path="/createproject" Component={PrivateRoute}>
+          <Route path="" Component={CreateProject}/>
+        </Route>
+        <Route path="/assesment" Component={PrivateRoute}>
+          <Route path="" Component={MFPAssesment}/>
+        </Route>
+        <Route path="/assesment2" Component={PrivateRoute}>
+          <Route path="" Component={CocomoAssesment}/>
+        </Route>
+        <Route path="/result" Component={PrivateRoute}>
+          <Route path="" Component={Result}/>
+        </Route>
+        <Route path="/account" Component={PrivateRoute}>
+          <Route path="" Component={Account}/>
+        </Route>
+        <Route path="*" element={<div>404... not found </div>} />
       </Routes>
     </BrowserRouter>
   );

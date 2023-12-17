@@ -7,6 +7,8 @@ import assesment_service from '../../API/assesment_service';
 
 const TableComponent = () => {
     const location = useLocation();
+    console.log(location.state);
+
     const [tableData, setTableData] = useState([{}]);  
     const addRow = () => {
       setTableData([...tableData, '']);

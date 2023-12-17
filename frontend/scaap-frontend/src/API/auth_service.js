@@ -1,6 +1,9 @@
-
+import { instance } from "./api.config.js";
 class AuthService {
-    async postAuthData(_login, _password) {
+
+  static isAuth = false;
+
+    static async postAuthData(_login, _password) {
         console.log("front");
         const data = {login: _login, password: _password}
         const response = await fetch('http://localhost:8888/auth/login', {
@@ -10,9 +13,8 @@ class AuthService {
           },
           body: JSON.stringify(data),
         });
-        console.log("front-1");
-        return response;
+        return response.json();
     }
 }
 
-export default new AuthService()
+export default AuthService;

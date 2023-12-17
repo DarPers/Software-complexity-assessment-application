@@ -1,10 +1,13 @@
+import { instance } from "./api.config.js";
+
 class AssesmentService {
-    async getMFPs(_dets, _rets, _fileType) {
+    async getMFPs(_dets, _rets, _fileType, token) {
         const data = {dets: _dets, rets: _rets, fileType: _fileType}
         const response = await fetch('http://localhost:8888/assesment/countpoints', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify(data),
         });
@@ -17,6 +20,7 @@ class AssesmentService {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(data),
       });
@@ -29,6 +33,7 @@ class AssesmentService {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(data),
       });
@@ -41,6 +46,7 @@ class AssesmentService {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(data),
       });
