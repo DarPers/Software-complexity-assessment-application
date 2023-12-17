@@ -1,5 +1,3 @@
-import { instance } from "./api.config.js";
-
 class AssesmentService {
     async getMFPs(_dets, _rets, _fileType, token) {
         const data = {dets: _dets, rets: _rets, fileType: _fileType}

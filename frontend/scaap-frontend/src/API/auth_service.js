@@ -1,4 +1,3 @@
-import { instance } from "./api.config.js";
 class AuthService {
 
   static isAuth = false;
