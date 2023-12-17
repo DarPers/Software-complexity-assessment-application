@@ -17,6 +17,7 @@ class UserController{
 
     async getProjectsAssesmentbyProjectId (id){
         const projects = await db.query(`SELECT * FROM public."assessment" where project_id=$1`, [id]);
+        console.log(projects.rows);
         return projects.rows;
     }
 

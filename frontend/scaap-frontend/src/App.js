@@ -7,6 +7,7 @@ import CocomoAssesment from "./pages/CocomoAssesment"
 import Result from "./pages/Results";
 import Account from "./pages/Account";
 import PrivateRoute from "./components/accountComponents/PrivateRoute";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path="/account" Component={PrivateRoute}>
           <Route path="" Component={Account}/>
+        </Route>
+        <Route path="/detail" Component={PrivateRoute}>
+          <Route path="" Component={DetailPage}/>
         </Route>
         <Route path="*" element={<div>404... not found </div>} />
       </Routes>

@@ -19,19 +19,20 @@ const Account = () => {
 
     const [query, setQuery] = useState();
     const [projects, setProjects] = useState([]);
-    const [sort, setSort] = useState("title");
+    const [sort, setSort] = useState();
 
     const [fetchingProjects, error, isProjectLoading] = useFetching(async () => {
         const projects = await project_service.getAllProjects(localStorage.getItem("id"));
         setProjects(projects);
+        console.log(projects);
     });
 
     const searchedPosts = useMemo(() => {
         if (sort == "title") {
-            projects.sort((a, b) => a[sort].localeCompare(b[sort]));
+            projects?.sort((a, b) => a[sort].localeCompare(b[sort]));
         }
-        else {
-            projects.sort((a, b) => (a.assesment[0][sort])- (b.assesment[0][sort]));
+        else if (sort != "title" && sort != undefined){
+            projects?.sort((a, b) => (a.assesment[0][sort])- (b.assesment[0][sort]));
         }
 
         if (query){

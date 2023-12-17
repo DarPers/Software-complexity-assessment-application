@@ -10,6 +10,10 @@ const Result = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const goToAccount = () => {
+        navigate("/account");
+    }
+
     return (
         <div>
             <Header></Header>
@@ -21,7 +25,7 @@ const Result = () => {
                 </div>
                 <div className={styles.btn_block}>
                     <Button className={styles.down_btn}>DOWNLOAD REPORT</Button>
-                    <Button className={styles.acc_btn}>GO TO ACCOUNT</Button>
+                    <Button className={styles.acc_btn} onClick={goToAccount}>GO TO ACCOUNT</Button>
                 </div>
             </div>
         </div>
