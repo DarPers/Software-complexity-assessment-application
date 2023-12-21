@@ -57,3 +57,28 @@
 .assesm .title{
     font-weight: bold;
 }
+
+@media (max-width: 800px) {
+    .line {
+        display: block;
+    }
+
+    .btns{
+        text-align: left;
+    }
+
+    .block {
+        width: 80%;
+    }
+
+    .assesm {
+        display: block;
+    }
+
+    .name {
+        width: 60%;
+        font-size: 20px;
+        overflow: hidden; /* Обрезаем всё за пределами блока */
+        text-overflow: ellipsis; /* Добавляем многоточие */
+    }
+}

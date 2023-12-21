@@ -46,7 +46,7 @@
     opacity: 0.7;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 350px) {
     .nick {
         display: none;
     }
