@@ -118,7 +118,7 @@ tr .inpt:focus {
     }    
 }
 
-@media (max-width: 700px) {
+@media (max-width: 720px) {
     .tr {
         font-size: 15px;
     }
@@ -133,11 +133,15 @@ tr .inpt:focus {
         text-indent: 4px;
     }
 
+    tr{
+        font-size: 15px;
+    }
+
     tr td {
         font-size: 15px;
-        overflow: hidden; /* Обрезаем всё за пределами блока */
+        overflow:hidden; /* Обрезаем всё за пределами блока */
         text-overflow: ellipsis; /* Добавляем многоточие */   
-        padding: 1%;
+        padding: 1px;
     }
     
     .inpt_desc {
@@ -165,6 +169,10 @@ tr .inpt:focus {
     }
 
     tr .inpt {
+        font-size: 12px;
+    }
+
+    tr{
         font-size: 12px;
     }
 

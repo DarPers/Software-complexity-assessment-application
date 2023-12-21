@@ -1,13 +1,13 @@
 .content {
-    padding: 80px;
+    padding-top: 80px;
+    padding-left: 20px;
     font-family: "Roboto";
     color: #5193B3;
 }
 
 .name {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
-    text-align: center;
 }
 
 .btn_block {
@@ -61,13 +61,13 @@
 
 .main {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
 }
 
 .btn_return {
     height: 35px;
-    margin-left: 40%;
     width: 20%;
+    margin-right: 20px;
     border: none;
     border-radius: 15px;
     background-color: #F8D49A;
@@ -78,4 +78,42 @@
 
 .btn_return:hover{
     background-color: #ffdfab;
+}
+
+@media (max-width: 720px) {
+    .content {
+        padding: 80px 0 0 20px;
+    }
+
+    .name {
+        overflow: scroll;
+        font-size: 30px;
+    }
+
+    .block_title{
+        font-size: 20px;
+    }
+
+    .info_block{
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .name {
+        overflow: scroll;
+        font-size: 25px;
+    }
+
+    .block_title{
+        font-size: 15px;
+    }
+
+    .info_block{
+        font-size: 15px;
+    }
+
+    .btn_return {
+        font-size: 15px;
+    }
 }
