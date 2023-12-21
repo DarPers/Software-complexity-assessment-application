@@ -15,11 +15,11 @@
 }
 
 .info {
+    width: 155%;
     display: flex;
     flex-direction: column; /* Расположение элементов в столбец */
     justify-content: center; /* Равномерное распределение по вертикали */
     align-items: center; /* Выравнивание по горизонтали */
-    height: 100vh;
     background-color: #5193B3;
 }
 
@@ -29,7 +29,7 @@
 } 
 
 .inpt {
-    width: 488px;
+    width: 68%;
     height: 35px;
     margin: 15px;
     text-indent: 15px;
@@ -43,7 +43,7 @@
 }
 
 .btn_login {
-    width: 488px;
+    width: 70%;
     height: 35px;
     margin: 15px;
     border: none;
@@ -58,7 +58,7 @@
 }
 
 .btn_register {
-    width: 488px;
+    width: 70%;
     height: 35px;
     margin: 15px;
     border: none;
@@ -78,4 +78,10 @@
     text-align: center;
     font-size: 25px;
     font-weight: 700;
+}
+
+@media (max-width: 720px) {
+    .info {
+        display: none;
+    }
 }
