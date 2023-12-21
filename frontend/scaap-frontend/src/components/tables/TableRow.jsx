@@ -58,12 +58,12 @@ const TableRow = ({setTableData, rowData}) => {
         />
       </td>
       <td>
-        <div>
+        <div className={classes.inpt}>
           {assesment.complexity}
         </div>
       </td>
       <td>
-      <div>
+      <div className={classes.inpt}>
           {assesment.weight}
         </div>
       </td>
