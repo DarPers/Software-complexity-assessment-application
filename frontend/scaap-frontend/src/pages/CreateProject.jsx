@@ -42,14 +42,14 @@ const CreateProject = () => {
                         <div className={classes.slct}>
                             <Select options={options} defaultValue="Language" value={option} setValue={setOption}/>
                         </div>
-                        <div className={classes.fin_block}>
-                            <textarea className={classes.inpt_desc} value={projectDesc} onChange={(e) => setProjectDesc(e.target.value)} placeholder="Description (recommend to leave a link of project GitHub)"></textarea>
+                    </div>
+                    <div className={classes.fin_block}>
+                        <textarea className={classes.inpt_desc} value={projectDesc} onChange={(e) => setProjectDesc(e.target.value)} placeholder="Description (recommend to leave a link of project GitHub)"></textarea>
                             <div className={classes.btn_block}>
                                 <div className={classes.comm}>Make sure that the description fully describes the purpose of the project,
                                  you can specify the basic requirements for the software product</div>
                                 <Button onClick={createProject} className={classes.btn_done}>DONE</Button>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
