@@ -19,6 +19,40 @@ class ProjectController {
             res.status(400).json({message: 'Reading project error'})
         }
     }
+
+    async deleteProject(req, res){
+        try {
+            const errors = validationResult(req);
+            console.log(errors);
+            if (!errors.isEmpty()){
+                return res.status(400).json({message: "Reading project error", errors})
+            }
+            const {id} = req.body;
+            const responce = await project_controller.deleteProject(id);
+            res.json(responce);
+        }
+        catch (e) {
+            console.log(e)
+            res.status(400).json({message: 'Reading project error'})
+        }
+    }
+
+    async createNewProject(req, res){
+        try {
+            const errors = validationResult(req);
+            console.log(errors);
+            if (!errors.isEmpty()){
+                return res.status(400).json({message: "Reading project error", errors})
+            }
+            const {project, user_id} = req.body;
+            const responce = await project_controller.createProject(project, user_id);
+            res.json(responce);
+        }
+        catch (e) {
+            console.log(e)
+            res.status(400).json({message: 'Reading project error'})
+        }
+    }
 }
 
 module.exports = new ProjectController()

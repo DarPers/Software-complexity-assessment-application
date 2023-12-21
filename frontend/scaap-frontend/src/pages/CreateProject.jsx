@@ -4,11 +4,12 @@ import Button from "../components/UI/button/Button"
 import Input from "../components/UI/input/Input"
 import classes from "../styles/CreateProject.module.css"
 import Select from "../components/UI/select/Select";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
+import PageComponent from "../components/pageComponent/pageComponent";
 
 const CreateProject = () => {
-
     const navigate = useNavigate();
+    const location = useLocation();
 
     const options = [
         {value: 'C#'},
@@ -18,31 +19,24 @@ const CreateProject = () => {
         {value: 'Assembler'},
         {value: 'VisualBasic (v6)'},
     ];
-    const [option, setOption] = useState('Language');
-    const [projectName, setProjectName] = useState('');
-    const [projectDesc, setProjectDesc] = useState('');
+    const [option, setOption] = useState(location?.state != undefined? location.state.language : "C#");
+    const [projectName, setProjectName] = useState(location?.state != undefined? location.state.name : "");
+    const [projectDesc, setProjectDesc] = useState(location?.state != undefined? location.state.desc : "");
 
     const createProject = () => {
         navigate('/assesment', {state: {language: option, name: projectName, desc: projectDesc}});
-        //сохранить проект в бд
-    }
-
-    const goToAccount = () => {
-        navigate('/account');
-        //сохранить проект в бд
     }
 
     return (
         <div>
-            <Header nick_name="meee"></Header>
+            <PageComponent
+                previosPagePath="/account" 
+                title="CREATE PROJECT" 
+                info="Step 1: create a card for your project"
+                info2="This information will be saved in your personal account, so you can find it easily"
+                state = {location.state}></PageComponent>
             <div className={classes.content}>
-                <div className={classes.title_block}>
-                    <div className={classes.title}>CREATE PROJECT</div>
-                    <Button onClick={goToAccount} className={classes.btn_return}>RETURN</Button>
-                </div>
-                <div className={classes.info}>
-                    <div>Step 1: create a card for your project</div>
-                    <div>This information will be saved in your personal account, so you can find it easily</div>
+                <div className={classes.info_block}>
                     <div className={classes.inpt_block}>
                         <Input className={classes.inpt} placeholder="Title" value={projectName} onChange={(e) => setProjectName(e.target.value)}></Input>
                         <div className={classes.slct}>

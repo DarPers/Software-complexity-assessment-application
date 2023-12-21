@@ -7,18 +7,21 @@ import assesment_service from '../../API/assesment_service';
 
 const TableComponent = () => {
     const location = useLocation();
-    console.log(location.state);
 
-    const [tableData, setTableData] = useState([{}]);  
+    const [tableData, setTableData] = useState(location?.state?.tableData != undefined ? location?.state?.tableData : [{}]);  
+    const [rows, setRows] = useState(location?.state?.rows != undefined ? location?.state?.rows : [{description: "", dets : 0, rets: 0, type: "ILF"}]);
     const addRow = () => {
       setTableData([...tableData, '']);
+      setRows([...rows, {description: "", dets : 0, rets: 0, type: "ILF"}]);
     };
   
-    const handleRowChange = (index, value) => {
+    const handleRowChange = (index, value, data) => {
       const updatedData = [...tableData];
       updatedData[index] = value;
       setTableData(updatedData);
-      console.log(tableData);
+      const newRow = [...rows];
+      newRow[index] = data;
+      setRows(newRow);
     };
 
     const assesment = useMemo(() => {
@@ -34,13 +37,13 @@ const TableComponent = () => {
     const projectAssesment = useMemo(async () => {
       const data = await assesment_service.defineProjectType(assesment, location.state.language);
       setProjectCharacts({projectType: data.projectType, KLOC:data.KLOC});
-      console.log(projectCharacts);
     }, [tableData])
   
     const navigate = useNavigate();
 
     const getCocomoAssesment = () => {
-      navigate('/assesment2', {state: {KLOC: projectCharacts.KLOC, projectType: projectCharacts.projectType, weight: assesment, name:location.state.name, desc:location.state.desc}});
+      console.log(projectCharacts);
+      navigate('/assesment2', {state: {KLOC: projectCharacts.KLOC, projectType: projectCharacts.projectType, weight: assesment, name:location.state.name, desc:location.state.desc, language: location.state.language, tableData:tableData, rows:rows}});
     }
 
     return (
@@ -55,12 +58,12 @@ const TableComponent = () => {
               <td>Complexity</td>
               <td>Weight</td>
             </tr>
-              {tableData.map((row, index) => (
+              {rows.map((row, index) => (
                 <TableRow
                   key={index}
                   data={row}
-                  setTableData={(value) => handleRowChange(index, value)}
-                />
+                  setTableData={(value, data) => handleRowChange(index, value, data)}
+                  rowData={row}/>
               ))}
           </tbody>
         </table>

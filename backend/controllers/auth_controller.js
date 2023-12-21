@@ -21,10 +21,14 @@ class AuthController {
             if (!errors.isEmpty()){
                 return res.status(400).json({message: "Registration error", errors})
             }
-            const {login, email, password} = req.body
+            const {login, email, password, repeatPassword} = req.body
             const candidate = await user_controller.getUsersbyLogin(login);
             if (candidate){
                 res.status(400).json({message : 'Login is taken'})
+                return;
+            }
+            if (password != repeatPassword){
+                res.status(400).json({message : 'Passwords is not equal!'})
                 return;
             }
             const hashPassword = bcrypt.hashSync(password, 4);

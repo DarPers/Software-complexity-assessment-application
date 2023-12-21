@@ -16,8 +16,7 @@ const DetailPage = () => {
 
     const data = {projectType:location.state.data.projectType, weight:location.state.data.FPs, 
                  assesmentCocomo: {month: location.state.data.month, people:location.state.data.pers, people_month:location.state.data.pers_month}, description:location.state.desc};
-    console.log("data");
-    console.log(data);
+                 
     return (
         <div>
             <Header></Header>
@@ -33,9 +32,6 @@ const DetailPage = () => {
                 <div className={styles.block_title}>Cost assesment</div>
                 <div className={classes.table}>
                     <ResultTable data={data}></ResultTable>
-                </div>
-                <div className={styles.btn_block}>
-                    <Button className={styles.down_btn}>DOWNLOAD REPORT</Button>
                 </div>
             </div>
         </div>

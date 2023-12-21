@@ -1,0 +1,80 @@
+.content {
+    margin-left: 50px;
+    font-family: Roboto;
+    color: #5193B3;
+    font-size: 18px;
+}
+
+.defined_block{
+    display: flex;
+    vertical-align: middle;
+}
+
+.defined_block div{
+    margin: 0 10px 15px 0;
+}
+
+.slct{
+    width: 60%;
+}
+
+.slct select{
+    appearance: none;
+    width: 18%;
+    height: 135%;
+    text-indent: 15px;
+    display: block;
+    border: 2px solid #5193B3;
+    border-radius: 13px;
+    font-size: 15px;
+    color: #5193B3;
+    background-image: url('../components//sources//arrow-down.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    background-position: calc(100% - 15px) center;
+}
+
+.inpt {
+    display: block;
+    width: 80%;
+    height: 25px;
+    text-indent: 15px;
+    border: 2px solid #5193B3;
+    color: #5193B3;
+    border-radius: 15px;
+    font-size: 15px;
+}
+
+.finish {
+    display: flex;
+    justify-content: space-between;
+}
+
+.finish div{
+    margin: 5px 0 10px 0;
+}
+
+.assesm {
+    margin: 20px;
+    font-size: 20px;
+}
+
+.assesm_row{
+    margin: 10px 0 5px 0;
+}
+
+.finish_btn {
+    height: 40px;
+    width: 30%;
+    background-color: #5193B3;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    color: #FFF;
+    border-radius: 15px;
+}
+
+.finish_btn:hover{
+    background-color: #61a5c7;
+}

@@ -1,13 +1,16 @@
 const db = require('../db');
 
-class UserController{
+class ProjectController{
 
-    // async createUser (req, res){
-    //     const {login, email, password} = req.body
-    //     console.log(login, email, password)
-    //     const newUser = await db.query(`INSERT INTO "user" ("login", "password", "email") VALUES ($1, $2, $3) RETURNING *`, [login, password, email]);
-    //     res.json(newUser.rows[0])
-    // }
+    async createProject (project, user_id){
+        const newProject = await db.query(`INSERT INTO "project" ("user_id", "title", "description", "language") VALUES ($1, $2, $3, $4) RETURNING *`,
+                                         [user_id, project.data.name, project.data.desc, project.data.language]);
+        console.log("55555");
+        console.log(newProject.rows[0])
+        return await db.query(`INSERT INTO "assessment" ("project_id", "FPs", "person_month", "month", "person", "project_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
+                                         [newProject.rows[0].id, project.assesment.weight, project.assesment.assesmentCocomo.people_month,
+                                         project.assesment.assesmentCocomo.month, project.assesment.assesmentCocomo.people, project.assesment.projectType]);
+    }
 
     async getProjectsbyUserId (id){
         const projects = await db.query(`SELECT * FROM public."project" where user_id=$1`, [id]);
@@ -19,6 +22,12 @@ class UserController{
         const projects = await db.query(`SELECT * FROM public."assessment" where project_id=$1`, [id]);
         console.log(projects.rows);
         return projects.rows;
+    }
+
+    async deleteProject (id){
+        const response_ = await db.query(`DELETE FROM public."assessment" where project_id=$1`, [id]);
+        const response = await db.query(`DELETE FROM public."project" where id=$1`, [id]);
+        return response;
     }
 
     async mergeData (projects) {
@@ -33,4 +42,4 @@ class UserController{
 
 }
 
-module.exports = new UserController()
+module.exports = new ProjectController()

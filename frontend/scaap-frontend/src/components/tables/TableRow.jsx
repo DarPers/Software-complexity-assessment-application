@@ -4,11 +4,10 @@ import Input from '../UI/input/Input';
 import assesment_servise from '../../API/assesment_service'
 import classes from './TableRow.module.css';
 
-const TableRow = ({setTableData}) => {
-
+const TableRow = ({setTableData, rowData}) => {
     const options = [{value: "ILF"}, {value: "ELF"}, {value: "EI"}, {value: "EO"}, {value: "EQ"}]
     const [option, setOption] = useState("ILF");
-    const [data, setData] = useState({description: "", dets : 0, rets: 0, type: option});
+    const [data, setData] = useState(rowData);
     const [assesment, setAssesment] = useState({weight: 0, complexity: "-"});
 
     const memoAssesment = useMemo(async () => {
@@ -21,7 +20,7 @@ const TableRow = ({setTableData}) => {
     }, [data.rets, data.dets, data.type]);
 
     useEffect(() => {
-        setTableData(assesment);
+        setTableData(assesment, data);
     }, [assesment]);
 
     const setFileType = (fileType) => {

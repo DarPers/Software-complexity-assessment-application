@@ -24,7 +24,6 @@ const Result = () => {
                     <ResultTable data={location.state}></ResultTable>
                 </div>
                 <div className={styles.btn_block}>
-                    <Button className={styles.down_btn}>DOWNLOAD REPORT</Button>
                     <Button className={styles.acc_btn} onClick={goToAccount}>GO TO ACCOUNT</Button>
                 </div>
             </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import ProjectComponent from "./projectComponent"
+import project_service from '../../API/project_service'
 
-const ProjectList = ({projects}) => {
+const ProjectList = ({projects, remove}) => {
     if (!projects?.length) {
         return (
             <h2>No projects</h2>
@@ -20,7 +21,9 @@ const ProjectList = ({projects}) => {
                     pers_month={project.assesment[0].person_month} 
                     FPs={project.assesment[0].FPs} 
                     projectType={project.assesment[0].project_type.replace(/\s+$/, '')} 
-                    key={project.id}>
+                    key={project.id}
+                    id={project.id}
+                    remove={remove}>
                 </ProjectComponent>
             )}
         </div>

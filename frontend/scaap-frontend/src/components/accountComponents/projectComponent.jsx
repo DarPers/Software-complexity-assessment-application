@@ -3,14 +3,20 @@ import { useNavigate } from "react-router-dom";
 import Button from "../UI/button/Button";
 import classes from "./projectComponent.module.css"
 import assesment_servise from '../../API/assesment_service'
+import project_service from '../../API/project_service'
 
-const ProjectComponent = (props) => {
+const ProjectComponent = ({remove, ...props}) => {
     const navigate = useNavigate();
 
     const detail = async () => {
         console.log(props);
         const description = await assesment_servise.getProjectDescription(props.projectType);
         navigate("/detail", {state: {data: props, desc: description}});
+    }
+
+    const deleteProject = async () => {
+        await project_service.deleteProject(props.id);
+        remove(props.id);
     }
 
     return (
@@ -33,7 +39,7 @@ const ProjectComponent = (props) => {
                 </div>
                 <div className={classes.btns}>
                     <Button className={classes.btn} onClick={detail}>Detail</Button>
-                    <Button className={classes.btn}>Download</Button>
+                    <Button className={classes.btn} onClick={deleteProject}>Delete</Button>
                 </div>
             </div>
         </div>

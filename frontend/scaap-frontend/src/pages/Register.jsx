@@ -12,6 +12,7 @@ const Register = () => {
     const [password , setPassword] = useState('');
     const [repPassword , setRepPassword] = useState('');
     const [email , setEmail] = useState('');
+    const [mass , setMass] = useState();
     const navigate = useNavigate();
 
     const logIn = async () => {
@@ -19,7 +20,14 @@ const Register = () => {
     }
 
     const register = async () => {
-        //регистрация
+        const response = await auth_service.register(login, password, repPassword, email);
+        const mass_err = response.errors?.errors[0].msg;
+        if (response.errors != undefined){
+            setMass(mass_err);
+        }
+        else {
+            setMass(response.message);
+        }
     }
 
     return(
@@ -28,8 +36,9 @@ const Register = () => {
                 <div className={classes.text}>START YOUR WAY HERE</div>
                 <Input className={classes.inpt} placeholder="Login" onChange={e => setLogin(e.target.value)}></Input>
                 <Input className={classes.inpt} placeholder="Email" onChange={e => setEmail(e.target.value)}></Input>
-                <Input className={classes.inpt} placeholder="Password" onChange={e => setPassword(e.target.value)}></Input>
-                <Input className={classes.inpt} placeholder="Repeat password" onChange={e => setRepPassword(e.target.value)}></Input>
+                <Input type="password" className={classes.inpt} placeholder="Password" onChange={e => setPassword(e.target.value)}></Input>
+                <Input type="password" className={classes.inpt} placeholder="Repeat password" onChange={e => setRepPassword(e.target.value)}></Input>
+                <div className={classes.mass_err}>{mass}</div>
                 <Button className={classes.btn_register} onClick={register}>CREATE ACCOUNT</Button>
                 <Button className={classes.btn_login} onClick={logIn}>I ALREADY HAVE AN ACCOUNT</Button>
             </div>

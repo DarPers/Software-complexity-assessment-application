@@ -4,11 +4,11 @@ import classes from "../../styles/CreateProject.module.css"
 import Header from '../UI/header/Header';
 import Button from '../../components/UI/button/Button';
 
-const PageComponent = ({previosPagePath, title, info}) => {
+const PageComponent = ({previosPagePath, title, info, state, info2}) => {
     const navigate = useNavigate();
 
     const returnToPrevios = () => {
-        navigate(previosPagePath);
+        navigate(previosPagePath, {state: state});
     }
 
   return (
@@ -20,7 +20,8 @@ const PageComponent = ({previosPagePath, title, info}) => {
                 <Button className={classes.btn_return} onClick={returnToPrevios}>RETURN</Button>
             </div>
             <div className={classes.info}>
-                {info}
+                <div>{info}</div>
+                <div>{info2}</div>
             </div>
         </div>
     </div>

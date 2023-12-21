@@ -1,5 +1,5 @@
 class AssesmentService {
-    async getMFPs(_dets, _rets, _fileType, token) {
+    async getMFPs(_dets, _rets, _fileType) {
         const data = {dets: _dets, rets: _rets, fileType: _fileType}
         const response = await fetch('http://localhost:8888/assesment/countpoints', {
           method: 'POST',

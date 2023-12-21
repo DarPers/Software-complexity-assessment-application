@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import {useNavigate, useLocation} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import Header from '../components/UI/header/Header';
 import Button from '../components/UI/button/Button';
 import ProjectList from '../components/accountComponents/ProjectList';
@@ -10,7 +10,6 @@ import { useFetching } from '../hooks/useFetching';
 import project_service from '../API/project_service';
 
 const Account = () => {  
-    const location = useLocation();
     const navigate = useNavigate();
 
     const createProject = () => {
@@ -19,12 +18,11 @@ const Account = () => {
 
     const [query, setQuery] = useState();
     const [projects, setProjects] = useState([]);
-    const [sort, setSort] = useState();
+    const [sort, setSort] = useState("title");
 
     const [fetchingProjects, error, isProjectLoading] = useFetching(async () => {
         const projects = await project_service.getAllProjects(localStorage.getItem("id"));
         setProjects(projects);
-        console.log(projects);
     });
 
     const searchedPosts = useMemo(() => {
@@ -41,6 +39,9 @@ const Account = () => {
         return projects;
     }, [query, projects, sort]);
 
+    const remove = (id) => {
+        setProjects(projects.filter((project) => project.id !== id));
+    }
 
     useEffect(() => {
         fetchingProjects();
@@ -70,7 +71,7 @@ const Account = () => {
                 <div className={classes.projects}>
                     {isProjectLoading
                         ? <h1>Loading...</h1>
-                        : <ProjectList projects={searchedPosts}></ProjectList>
+                        : <ProjectList projects={searchedPosts} remove={remove}></ProjectList>
                     }
                 </div>
             </div>
