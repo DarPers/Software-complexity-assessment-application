@@ -1,0 +1,17 @@
+.title {
+    color: #5193B3;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: Roboto;
+}
+
+.text {
+    margin-top: 10px;
+    color: #5193B3;
+    font-size: 20px;
+    font-family: Roboto;
+}
+
+.paragraf {
+    margin-top: 50px;
+}
