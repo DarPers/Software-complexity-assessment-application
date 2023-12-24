@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import classes from './Header.module.css'
 import img_src from '../../sources/profile-circle.png'
-import img_logOut from '../../sources/interface-logout--arrow-exit-frame-leave-logout-rectangle-right.png'
+import img_logOut from '../../sources/logout.png'
 
 const Header = () => {
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ const Header = () => {
     }
 
     const goHome = () => {
-        navigate('/home');
+        navigate('/');
     }
 
     return (

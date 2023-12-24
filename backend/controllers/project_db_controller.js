@@ -5,8 +5,6 @@ class ProjectController{
     async createProject (project, user_id){
         const newProject = await db.query(`INSERT INTO "project" ("user_id", "title", "description", "language") VALUES ($1, $2, $3, $4) RETURNING *`,
                                          [user_id, project.data.name, project.data.desc, project.data.language]);
-        console.log("55555");
-        console.log(newProject.rows[0])
         return await db.query(`INSERT INTO "assessment" ("project_id", "FPs", "person_month", "month", "person", "project_type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
                                          [newProject.rows[0].id, project.assesment.weight, project.assesment.assesmentCocomo.people_month,
                                          project.assesment.assesmentCocomo.month, project.assesment.assesmentCocomo.people, project.assesment.projectType]);

@@ -37,6 +37,7 @@ const TableComponent = () => {
     const projectAssesment = useMemo(async () => {
       const data = await assesment_service.defineProjectType(assesment, location.state.language);
       setProjectCharacts({projectType: data.projectType, KLOC:data.KLOC});
+      console.log(tableData);
     }, [tableData])
   
     const navigate = useNavigate();

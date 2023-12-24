@@ -35,7 +35,7 @@ function App() {
         <Route path="/detail" Component={PrivateRoute}>
           <Route path="" Component={DetailPage}/>
         </Route>
-        <Route path="/home" Component={Home} />
+        <Route path="/" Component={Home} />
         <Route path="*" Component={NotFoundPage} />
       </Routes>
     </BrowserRouter>

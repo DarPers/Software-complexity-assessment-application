@@ -10,6 +10,5 @@ router.post('/registration', [
     check("email", "it must be an email").isEmail()
 ], AuthController.registration)
 router.post('/login', AuthController.login)
-router.get('/test', authMiddleware, AuthController.getUsers)
 
 module.exports = router

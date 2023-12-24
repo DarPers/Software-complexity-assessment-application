@@ -6,7 +6,7 @@ import Button from '../components/UI/button/Button';
 const NotFoundPage = () => {  
     const navigate = useNavigate();
     const goHome = () => {
-        navigate("/home");
+        navigate("/");
     }
 
     return (

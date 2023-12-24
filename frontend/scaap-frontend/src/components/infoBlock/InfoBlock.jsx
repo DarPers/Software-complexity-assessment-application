@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const InfoBlock = () => {
     const navigate = useNavigate();
     const readMore = () => {
-        navigate("/home");
+        navigate("/");
     }
 
     return (

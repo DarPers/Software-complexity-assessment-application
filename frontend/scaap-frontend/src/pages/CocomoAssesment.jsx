@@ -32,6 +32,7 @@ const CocomoAssesment = () => {
   const assesment = useMemo(async () => {
     const data = await assesment_servise.getCocomoAssesment(tableData, definedType, kloc);
     setAssem({people: data.people, month: data.time, people_month: data.effort});
+    console.log(tableData);
   }, [tableData, kloc, definedType])
 
   return (
